@@ -1,0 +1,28 @@
+resources:
+  jobs:
+    Data_Marts:
+      name: Data_Marts
+      schedule:
+        quartz_cron_expression: 50 0 13 * * ?
+        timezone_id: America/Fortaleza
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: Bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Data_marts/Atividade_land_to_bronze
+            source: WORKSPACE
+        - task_key: Silver
+          depends_on:
+            - task_key: Bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Data_marts/Atividade_bronze_to_silver
+            source: WORKSPACE
+        - task_key: Gold
+          depends_on:
+            - task_key: Silver
+          notebook_task:
+            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Data_marts/Atividade_silver_to_gold
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
