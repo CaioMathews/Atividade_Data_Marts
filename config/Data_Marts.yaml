@@ -9,19 +9,19 @@ resources:
       tasks:
         - task_key: Bronze
           notebook_task:
-            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Data_marts/Atividade_land_to_bronze
+            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Atividade_Data_Marts/Atividade_land_to_bronze
             source: WORKSPACE
         - task_key: Silver
           depends_on:
             - task_key: Bronze
           notebook_task:
-            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Data_marts/Atividade_bronze_to_silver
+            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Atividade_Data_Marts/Atividade_bronze_to_silver
             source: WORKSPACE
         - task_key: Gold
           depends_on:
             - task_key: Silver
           notebook_task:
-            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Data_marts/Atividade_silver_to_gold
+            notebook_path: /Workspace/Users/caiomathews2014@gmail.com/Atividade_Data_Marts/Atividade_silver_to_gold
             source: WORKSPACE
       queue:
         enabled: true
